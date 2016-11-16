@@ -1,5 +1,6 @@
 package com.dmikhov.androidapp1.domain.repository
 
+import com.dmikhov.androidapp1.domain.repository.abs.ILocalRepository
 import com.dmikhov.androidapp1.entities.City
 import com.dmikhov.androidapp1.entities.Delivery
 import com.dmikhov.androidapp1.entities.Order
@@ -9,7 +10,7 @@ import rx.Observable
 /**
  * Created by dmikhov on 14.11.2016.
  */
-object LocalRepository: IRepository {
+class LocalRepository constructor() : ILocalRepository {
     private val logger = Logger(this.javaClass)
     var deliveriesObservable: Observable<List<Delivery>?> = Observable.empty()
     var citiesObservable: Observable<List<City>?> = Observable.empty()
@@ -24,5 +25,13 @@ object LocalRepository: IRepository {
                 .flatMapIterable { d -> d }
                 .filter { d -> d.id == id }
                 .single().map { d -> d.orders }
+    }
+
+    override fun updateDeliveriesObservable(deliveriesObs: Observable<List<Delivery>?>) {
+        deliveriesObservable = deliveriesObs
+    }
+
+    override fun updateCitiesObservable(citiesObs: Observable<List<City>?>) {
+        citiesObservable = citiesObs
     }
 }

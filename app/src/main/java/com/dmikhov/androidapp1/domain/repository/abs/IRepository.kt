@@ -1,4 +1,4 @@
-package com.dmikhov.androidapp1.domain.repository
+package com.dmikhov.androidapp1.domain.repository.abs
 
 import com.dmikhov.androidapp1.entities.City
 import com.dmikhov.androidapp1.entities.Delivery
