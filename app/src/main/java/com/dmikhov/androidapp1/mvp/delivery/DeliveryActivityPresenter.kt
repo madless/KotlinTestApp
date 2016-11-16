@@ -13,7 +13,6 @@ import javax.inject.Inject
  * Created by dmikhov on 15.11.2016.
  */
 open class DeliveryActivityPresenter(deliveryId: Int?) : BasePresenter<DeliveryActivity>() {
-    var deliveryId: Int? = null
     @Inject lateinit var repositoryManager: RepositoryManager
 
     init {

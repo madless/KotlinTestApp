@@ -1,5 +1,6 @@
 package com.dmikhov.androidapp1.domain.di
 
+import com.dmikhov.androidapp1.domain.net.ServerApi
 import com.dmikhov.androidapp1.domain.repository.CloudRepository
 import com.dmikhov.androidapp1.domain.repository.LocalRepository
 import com.dmikhov.androidapp1.domain.repository.abs.ICloudRepository
@@ -19,5 +20,5 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideCloudRepository() : ICloudRepository = CloudRepository()
+    fun provideCloudRepository(api: ServerApi) : ICloudRepository = CloudRepository(api)
 }

@@ -14,14 +14,12 @@ import com.dmikhov.androidapp1.mvp.cache.PresenterFactory
 import com.dmikhov.androidapp1.utils.Const
 import com.dmikhov.androidapp1.utils.IntentHelper
 
-class MainActivity : BaseActivity(), OnDeliverySelectedListener {
+class MainActivity : BaseActivity<MainActivityPresenter>(), OnDeliverySelectedListener {
 
     var rvDeliveries: RecyclerView? = null
     var progressBar: ProgressBar? = null
     var adapter: DeliveriesAdapter? = null
     val factory = PresenterFactory() { MainActivityPresenter() }
-    val presenter: MainActivityPresenter? = PresenterCache.getPresenter(Const.PRESENTER_CACHE_MAIN_ACTIVITY, factory)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +30,7 @@ class MainActivity : BaseActivity(), OnDeliverySelectedListener {
         adapter = DeliveriesAdapter()
         adapter?.onDeliverySelectedListener = this
         rvDeliveries?.adapter = adapter
+        presenter = PresenterCache.getPresenter(Const.PRESENTER_CACHE_MAIN_ACTIVITY, factory)
         presenter?.attachView(this)
     }
 

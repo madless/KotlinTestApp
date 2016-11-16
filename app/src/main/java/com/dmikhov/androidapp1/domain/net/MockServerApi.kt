@@ -9,9 +9,9 @@ import rx.Observable
 import java.util.*
 
 /**
- * Created by dmikhov on 14.11.2016.
+ * Created by dmikhov on 16.11.2016.
  */
-object ServerDataLoader : ServerApi {
+class MockServerApi: ServerApi {
     private val logger = Logger(javaClass)
     private var cities: List<City> = ArrayList()
     private var deliveries: List<Delivery>? = ArrayList()
@@ -27,10 +27,9 @@ object ServerDataLoader : ServerApi {
         val order4 = Order(kiev, voznesensk, 10)
         val order5 = Order(kiev, odessa, 20)
         val order6 = Order(nikolaev, kiev, 10)
-        val delivery1 = Delivery(0, "Delivery 0", listOf(order1, order2, order3, order4, order5, order6, order1, order2, order3, order4, order5, order6, order1, order3, order4), 1000)
-        val delivery2 = Delivery(1, "Delivery 1", listOf(order1, order2), 200)
+        val delivery1 = Delivery(0, "Test delivery", listOf(order1, order2, order3), 500)
         cities = listOf(odessa, nikolaev, voznesensk, kiev)
-        deliveries = listOf(delivery1, delivery2)
+        deliveries = listOf(delivery1)
     }
 
     override fun fetchDeliveries() = Observable.create(Observable.OnSubscribe<List<Delivery>?>() { s ->

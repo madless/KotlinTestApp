@@ -16,12 +16,11 @@ import com.dmikhov.androidapp1.utils.Const
 /**
  * Created by dmikhov on 15.11.2016.
  */
-class DeliveryActivity: BaseActivity() {
+class DeliveryActivity: BaseActivity<DeliveryActivityPresenter>() {
 
     var adapter: OrdersAdapter? = null
     var rvOrders: RecyclerView? = null
     var progressBar: ProgressBar? = null
-    var presenter: DeliveryActivityPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
